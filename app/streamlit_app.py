@@ -2,18 +2,14 @@ import streamlit as st
 import requests
 import plotly.graph_objects as go
 
-# ---------------------------------------------------
-# PAGE CONFIG
-# ---------------------------------------------------
+
 st.set_page_config(
     page_title="AI Fraud Intelligence System",
     page_icon="🚨",
     layout="wide"
 )
 
-# ---------------------------------------------------
-# CUSTOM CSS
-# ---------------------------------------------------
+
 st.markdown("""
 <style>
 
@@ -43,9 +39,7 @@ h1, h2, h3, h4, h5, h6, p, label {
 </style>
 """, unsafe_allow_html=True)
 
-# ---------------------------------------------------
-# SESSION STATE
-# ---------------------------------------------------
+
 if "time" not in st.session_state:
     st.session_state.time = 12
 
@@ -61,9 +55,7 @@ if "velocity" not in st.session_state:
 if "international" not in st.session_state:
     st.session_state.international = 0
 
-# ---------------------------------------------------
-# HIGH RISK BUTTON FUNCTION
-# ---------------------------------------------------
+
 def load_high_risk():
 
     st.session_state.time = 2
@@ -72,9 +64,7 @@ def load_high_risk():
     st.session_state.velocity = 10
     st.session_state.international = 1
 
-# ---------------------------------------------------
-# SIDEBAR
-# ---------------------------------------------------
+
 st.sidebar.title("Transaction Controls")
 
 time = st.sidebar.slider(
@@ -120,9 +110,7 @@ st.sidebar.button(
     on_click=load_high_risk
 )
 
-# ---------------------------------------------------
-# MAIN TITLE
-# ---------------------------------------------------
+
 st.title("AI Fraud Intelligence System")
 
 st.write("""
@@ -133,9 +121,7 @@ Real-time fraud risk analysis using:
 - Risk intelligence insights
 """)
 
-# ---------------------------------------------------
-# ANALYZE BUTTON
-# ---------------------------------------------------
+
 if st.button("Analyze Transaction"):
 
     payload = {
@@ -167,9 +153,7 @@ if st.button("Analyze Transaction"):
             "insights"
         ]
 
-        # ---------------------------------------------------
-        # RESULT SECTION
-        # ---------------------------------------------------
+        
         st.subheader("Fraud Analysis Result")
 
         if risk_category == "HIGH RISK":
@@ -190,17 +174,13 @@ if st.button("Analyze Transaction"):
                 f"✅ {risk_category}"
             )
 
-        # ---------------------------------------------------
-        # METRIC
-        # ---------------------------------------------------
+        
         st.metric(
             "Fraud Probability",
             f"{fraud_probability}%"
         )
 
-        # ---------------------------------------------------
-        # GAUGE CHART
-        # ---------------------------------------------------
+        
         fig = go.Figure(go.Indicator(
             mode="gauge+number",
             value=fraud_probability,
@@ -225,9 +205,7 @@ if st.button("Analyze Transaction"):
             use_container_width=True
         )
 
-        # ---------------------------------------------------
-        # INSIGHTS
-        # ---------------------------------------------------
+        
         st.subheader(
             "AI Risk Insights"
         )
@@ -252,9 +230,7 @@ if st.button("Analyze Transaction"):
             f"API Connection Error: {e}"
         )
 
-# ---------------------------------------------------
-# FOOTER
-# ---------------------------------------------------
+
 st.markdown("---")
 
 st.caption(
