@@ -1,0 +1,15 @@
+version: '3'
+
+services:
+
+  fraud-detection-app:
+
+    build:
+      context: ..
+
+      dockerfile: deployment/Dockerfile
+
+    ports:
+      - "8501:8501"
+
+    container_name: fraud_detection_system
