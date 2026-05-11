@@ -238,6 +238,18 @@ Future improvements:
 
 ---
 
+# Screenshots
+
+## Fraud Detection Dashboard
+
+<img src="./assets/fraud_dashboard.png" width="100%">
+
+---
+
+## Fraud Analysis Result
+
+<img src="./assets/fraud_result.png" width="100%">
+
 # Author
 
 Rouman Syed

@@ -4,7 +4,7 @@ import joblib
 import numpy as np
 
 
-model = joblib.load("../models/random_forest.pkl")
+model = joblib.load("models/random_forest.pkl")
 
 
 app = FastAPI(
